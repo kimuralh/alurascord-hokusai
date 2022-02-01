@@ -27,6 +27,9 @@ export default function PaginaInicial() {
     const [username, setUsername] = React.useState("kimuralh");
     const roteamento = useRouter();
 
+    //desafio bloquear com 2 caracteres ou menos
+    const bloqueio = username.length <= 2;
+
     return (
       <>
         <Box
@@ -105,6 +108,8 @@ export default function PaginaInicial() {
               <Button
                 type='submit'
                 label='Entrar'
+                //desafio bloqueio
+                disabled={bloqueio}
                 fullWidth
                 buttonColors={{
                   contrastColor: appConfig.theme.colors.neutrals["000"],
@@ -138,8 +143,9 @@ export default function PaginaInicial() {
                   borderRadius: '50%',
                   marginBottom: '16px',
                 }}
-
-                src={`https://github.com/${username}.png`}
+                
+                //desafio bloqueio
+                src={bloqueio?"":`https://github.com/${username}.png`}
               />
               
               <Text
